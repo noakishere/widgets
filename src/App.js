@@ -35,14 +35,22 @@ const options = [
 
 export default () => {
 	const [selected, setSelected] = useState(options[0]);
+	const [showDropdown, setShowDropdown] = useState(true);
+	
 
 	return (
 		<div className="ui container">
-			<Dropdown
+			<button className="ui button" onClick={() => setShowDropdown(!showDropdown)}>Toggle Dropdown</button>
+			{showDropdown ?
+				<>
+				<Dropdown
 				selected={selected}
 				onSelectedChange={setSelected}
 				options={options}
-			/>
+				/> 
+				<h4 style={{color: selected.value}}>Demonstrating the color change through Dropdown</h4> </> : null
+			}
+			
 			{/* <Search /> */}
 			{/* <Accordion items={items} /> */}
 		</div>
